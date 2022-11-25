@@ -1,6 +1,6 @@
 from django.db import models
 
-# from persons.models import Person
+from persons.models import Person
 # from genres.models import Genre
 
 
@@ -33,6 +33,7 @@ class Movie(models.Model):
     slogan = models.CharField(max_length=150, verbose_name='Слоган')
     year = models.DateField('Год выхода', db_index=True)
     facts = models.JSONField()
+    genres = models.JSONField()
     # genres = models.ManyToManyField(
     #     Genre,
     #     related_name='movie',
@@ -40,11 +41,11 @@ class Movie(models.Model):
     # )
     countries = models.JSONField()
     seasonsInfo = models.JSONField()
-    # persons = models.ManyToManyField(
-    #     Person,
-    #     related_name='movie',
-    #     verbose_name='Люди'
-    # )
+    persons = models.ManyToManyField(
+        Person,
+        related_name='movies',
+        verbose_name='Люди'
+    )
     lists = models.JSONField()
     typeNumber = models.FloatField()
     alternativeName = models.CharField(

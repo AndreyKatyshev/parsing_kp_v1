@@ -1,7 +1,5 @@
 from django.db import models
 
-from movies.models import Movie
-
 
 class Person(models.Model):
     spouses = models.JSONField()
@@ -19,11 +17,6 @@ class Person(models.Model):
         max_length=100, verbose_name='Имя по Английски')
     facts = models.JSONField()
     growth = models.IntegerField(verbose_name='Рост')
-    movies = models.ManyToManyField(
-        Movie,
-        related_name='persons',
-        verbose_name='Картины'
-    )
     name = models.CharField(
         max_length=100, verbose_name='Имя')
     photo = models.URLField()
