@@ -25,3 +25,13 @@ class Person(models.Model):
         max_length=50, verbose_name='Пол')
     updatedAt = models.DateTimeField()
 
+
+class PersonMiniModel(models.Model):
+    id = models.IntegerField(primary_key=True)
+    photo = models.URLField()
+    name = models.CharField(
+        max_length=100, verbose_name='Имя', null=True)
+    enName = models.CharField(
+        max_length=100, verbose_name='Имя по Английски')
+    enProfession = models.CharField(
+        max_length=100, verbose_name='Профессия по Английски')
